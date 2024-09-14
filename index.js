@@ -107,7 +107,7 @@ passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_S,
     //redirects to this after authentication
-    callbackURL: "http://localhost:3000/auth/google/callback",
+    callbackURL: "https://e-commerce-1uxr.onrender.com/auth/google/callback",
     scope:["profile","email"]
   },
   async(accessToken, refreshToken, profile, cb) => {
