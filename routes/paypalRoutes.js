@@ -23,8 +23,8 @@ router.post("/create-order/:totalAmount",isLoggedIn, async(req, res) => {
             }
         }],
         application_context : {
-            return_url : "http://localhost:3000/paypal/success",
-            cancel_url : "http://localhost:3000/paypal/cancel"
+            return_url : "https://e-commerce-1uxr.onrender.com/paypal/success",
+            cancel_url : "https://e-commerce-1uxr.onrender.com/paypal/cancel"
 
         }
 
