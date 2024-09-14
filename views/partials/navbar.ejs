@@ -1,0 +1,57 @@
+<nav class="fixed-top navbar navbar-expand-lg navbar-light mb-3" style="background-color: white; color: black; padding: 10px;">
+  <div class="container">
+    <a class="navbar-brand" href="#" style="color: #219ebc;">E-Commerce</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about-us">About Us</a>
+        </li>
+        <% if(!currentUser) { %>
+          <li class="nav-item">
+            <a class="nav-link " href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Signup</a>
+          </li>
+        <% } %>
+      </ul>
+
+        <% if(currentUser) { %>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a href="#" class="nav-link"><%= currentUser.username %></a>
+          </li>
+            <%if(currentUser.userType === "consumer") {%>
+              <li class="nav-item">
+                <a href="/products/user/cart" class="nav-link"><i class="fa-solid fa-cart-shopping"></i>
+                <sup><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger "><%= currentUser.cart.length %></span></sup></a>
+              </li>
+              <li class="nav-item">
+                <a href="/products/user/wishlist" class="nav-link"><i class="fas fa-heart"></i><sup><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><%= currentUser.wishlist.length %></span></sup></a>
+              </li>
+              <li class="nav-item">
+                <a href="/logout" class="nav-link ">Logout</a>
+              </li>
+          
+            <%} else {%>
+              <li class="nav-item"> <a href="/products/new" class="nav-link ">New</a>
+              </li>
+              <li class="nav-item"></li>
+                <a href="/logout" class="nav-link ">Logout</a>
+              </li>
+            <% } %>
+          
+      </ul>
+      <% } %>
+    </div>
+  </div>
+</nav>

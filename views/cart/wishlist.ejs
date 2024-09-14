@@ -1,0 +1,43 @@
+<% layout("layout/boilerplate") -%>
+<section class="h-100 gradient-custom">
+    <div class="container py-5">
+      <div class="row d-flex justify-content-center my-4">
+        <div class="col-md-8">
+          <div class="card mb-4">
+            <div class="card-header py-3">
+              <h5 class="mb-0">Wishlist - <%= wishlist.length %> items</h5>
+            </div>
+            <div class="card-body">
+              <% if (wishlist.length > 0) { %>
+                <% wishlist.forEach((item) => { %>
+                  <div class="row mb-4">
+                    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                      <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                        <img src="<%= item.img %>" class="w-100" alt="<%= item.name %>" />
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                      <p><strong><%= item.name %></strong></p>
+                      <p>Price: <strong>$<%= item.price %></strong></p>
+                      <form action="/products/<%= item.id %>/cart" method="post">
+                        <button type="submit" class="btn btn-primary btn-sm me-1 mb-2" title="Add to cart">
+                          <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                      </form>
+                      <form action="/wishlist/<%= item.id %>?_method=DELETE" method="post">
+                        <button type="submit" class="btn btn-danger btn-sm" title="Remove from wishlist">
+                          <i class="fas fa-trash"></i> Remove
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                <% }) %>
+              <% } else { %>
+                <p>Your wishlist is empty.</p>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

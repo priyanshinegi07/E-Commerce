@@ -1,0 +1,59 @@
+<% layout('/layout/boilerplate') -%>
+
+<div class="container d-flex align-items-center justify-content-center mt-4">
+  <div class="row w-100 mt-5">
+    <!-- Left Column for Image -->
+    <div class="col-md-6 d-none d-md-block">
+      <img src="/images/login.png" class="img-fluid" alt="Login Illustration">
+    </div>
+    
+    <!-- Right Column for Form -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div class="p-4 w-90">
+        <h1 class="text-center fs-3 mb-4">Welcome Back! Please Login</h1>
+        
+        <form action="/login" method="post">
+          
+          <!-- Username with Icon -->
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-person"></i></span>
+            <input class="form-control" type="text" name="username" id="username" placeholder="Username">
+          </div>
+
+          <!-- Email with Icon -->
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+            <input class="form-control" type="email" name="email" id="email" placeholder="Email">
+          </div>
+
+          <!-- Password with Icon -->
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+            <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+          </div>
+
+          <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-primary pt-2 pb-2" style="border-radius: 2rem;">Login</button>
+          </div>
+
+          <div class="text-center">
+            <a href="/auth/google" class="google-btn pt-2 pb-2 mb-3">
+              <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo">
+                Continue with Google
+            </a>
+
+          </div>
+          <div class="d-flex justify-content-center align-items-center mb-3 w-100">
+            <p class="mb-0 fs-4">Don't have an account? <a href="/register">Create one!</a></p>
+            <!-- <button type="submit" class="btn btn-primary">Login</button> -->
+            
+            
+          </div>
+
+        </form>
+      </div>
+    <!-- end of form   -->
+    </div>
+
+  </div>
+</div>

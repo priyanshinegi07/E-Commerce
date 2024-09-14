@@ -1,0 +1,48 @@
+.payment-success-container {
+    height: 80vh;
+    background-color: #f4f7f9;
+}
+
+.payment-details-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    text-align: center;
+}
+
+.payment-title {
+    color: #4CAF50;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.payment-confirmation {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.payment-info {
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.payment-info p {
+    margin: 0.5rem 0;
+}
+
+.btn-order {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.btn-order:hover {
+    background-color: #0056b3;
+}

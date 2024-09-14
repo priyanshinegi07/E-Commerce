@@ -1,0 +1,154 @@
+<% layout('./layout/boilerplate') -%>
+<section class="h-100 gradient-custom">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center my-4">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Cart - <%= cart.length%> items%></h5>
+          </div>
+          <div class="card-body">
+            <!-- Single item -->
+            <%cart.forEach((item) => {%>
+             
+            <div class="row">
+              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                <!-- Image -->
+                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                  <img src="<%=item.img%>"
+                    class="w-100" alt="<%=item.name%>" />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                  </a>
+                </div>
+                <!-- Image -->
+              </div>
+
+              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                <p><strong><%=item.name%></strong></p>
+                <form action="/products/user/cart/<%=item.id%>?_method=DELETE" method="post">
+                  <button  class="btn btn-primary btn-sm me-1 mb-2" 
+                  title="Remove item">
+                  <!-- <i class="fas fa-trash"></i> -->
+                   DELETE
+                  </button>
+                </form>
+                
+                
+                
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <!-- Quantity -->
+                <div class="d-flex mb-4" style="max-width: 300px">
+                  <form action="/products/user/cart/<%= item.id %>" method="post">
+                    <input type="hidden" name="action" value="decrement">
+                    <button class="btn btn-primary px-3 me-2">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </form>
+
+                  <div class="form-outline">
+                    <input id="quantity-<%= item._id %>" min="1" name="quantity" value="<%= item.count %>" type="number" class="form-control" readonly />
+                    <label class="form-label">Quantity</label>
+                  </div>
+
+                  <form action="/products/user/cart/<%= item.id %>" method="post">
+                    <input type="hidden" name="action" value="increment">
+                    <button class="btn btn-primary px-3 ms-2">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </form>
+                </div>
+                <!-- Quantity -->
+
+                <!-- Price -->
+                <p class="text-start text-md-center">
+                  <strong>Unit Price : $<%=item.price%></strong>
+                </p>
+                <!-- Price -->
+              </div>
+            </div>
+            <!-- Single item -->
+          <%})%>
+
+            <hr class="my-4" />
+
+            
+          </div>
+        </div>
+      
+        
+       
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Summary</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              
+              
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                <div>
+                  <strong>Total amount</strong>
+                  
+                </div>
+                <span><strong>$<%=totalAmount%></strong></span>
+              </li>
+            </ul>
+            <form action="/paypal/create-order/<%=totalAmount%>" method="post" id="checkout-form">
+              <button  class="btn btn-primary btn-lg btn-block" id="pay-with-paypal">
+                Go to checkout
+              </button>
+            </form>
+            <div id="paypal-button-container" style="display:none;"></div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <script src="https://www.paypal.com/sdk/js?client-id=AVsoYDT_ieJC5XeBBCOPeR5nDK0o0nPInCuJZAmD7nsxys0LsCiMfA91ENBf8r9oqYkJyHFQGhMFoE2F"></script>
+
+<script>
+  // Add PayPal Buttons
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return fetch('/paypal/create-order', {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(res => res.json()).then(orderData => {
+        console.log('Order Data:', orderData)
+        return orderData.id;  // Return the order ID
+      });
+    },
+    onApprove: function(data, actions) {
+      return fetch('/paypal/capture-order', {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ orderID: data.orderID })
+      }).then(res => res.json()).then(details => {
+        alert("Transaction completed by " + details.payer.name.given_name);
+        window.location.href = "/products";  // Redirect to success page
+      }).catch((err) => {
+        console.log("error capturing payment")
+        alert("please try again")
+      })
+      ;
+    }
+  }).render('#paypal-button-container');
+  
+  // Hide the button until PayPal renders it
+  document.getElementById('pay-with-paypal').addEventListener('click', function() {
+    document.querySelector('#paypal-button-container').style.display = 'block';
+  });
+  </script> -->

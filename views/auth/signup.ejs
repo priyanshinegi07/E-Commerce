@@ -1,0 +1,64 @@
+<% layout('./layout/boilerplate') -%>
+
+<div class=" container d-flex justify-content-center align-items-center mt-4">
+    <div class="row w-100 mt-5">
+    <!-- Left Column for Image -->
+    <div class="col-md-6 d-none d-md-block" >
+        <img src="/images/login.png" class="img-fluid" alt="Signup Illustration">
+    </div>
+    <!-- Right Column -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <div class="p-4 w-75 ">
+            <h1 class="text-center fs-3 mb-4" >Create Your Account</h1>
+            <form action="/register" method="post">
+                <!-- Username with Icon -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-person"></i></span>
+                    <input class="form-control" type="text" name="username" id="username" placeholder="Username">
+                </div>
+
+                <!-- Email with Icon -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Email">
+                </div>
+                <!-- Password with Icon -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+                </div>
+
+                <div class="mb-3" class="form-check">
+                    <p>Register as : </p>
+                    <input class="form-check-input" type="radio" name="userType" id="retailer" value="retailer">
+                    <label class="form-check-label" for="retailer">Retailer</label>
+                    <input class="form-check-input" type="radio" name="userType" id="consumer" value="consumer" checked>
+                    <label class="form-check-label" for="consumer">Consumer</label>
+                </div>
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary pt-2 pb-2" style="border-radius: 2rem;">Sign Up</button>
+                </div>
+
+                <div class="text-center">
+                    <a href="/auth/google" class="google-btn pt-2 pb-2 mb-3">
+                    <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo">
+                        Continue with Google
+                    </a>
+        
+                </div>
+                
+                <div class="d-flex justify-content-center align-items-center mb-3 w-100">
+                    <p class="mb-0 fs-4">Already have an account ?<a href="/login"> Login</a></p>
+                    <!-- <button type="submit" class="btn btn-primary">Login</button> -->
+                    
+                    
+                </div>
+                <!-- <div class="d-flex justify-content-between align-items-center mb-3">
+                    <p>Already have an account ? <a href="/login">Login</a></p>
+                </div> -->
+            </form>
+        </div>
+        
+    </div>
+    </div>
+</div

@@ -1,0 +1,77 @@
+<% layout('/layout/boilerplate') -%>
+<section class="container mt-6 product">
+    <div class="row">
+        <!-- Electronics-->
+        <div class="col-lg-8 col-md-6 col-sm-12 mb-3">
+            <div class="product-electronics p-4 h-100 bg-light">
+                <div class="product-text d-flex flex-column align-items-center mt-2 fs-4">
+                    <h2>Electronics</h2>
+                    <p>Find latest gadgets and devices here!</p>
+                    <a href="#" class="btn btn-primary btn-sm w-50 fs-4 pt-2 pb-2">Explore</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fashion-->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+            <div class="product-fashion p-4 h-100 bg-light">
+                <div class="product-text d-flex flex-column align-items-center mt-2 fs-5">
+                    <h2>Fashion</h2>
+                    <p>Stay in style with our trendy clothing and accessories</p>
+                    <a href="#" class="btn btn-primary btn-sm w-50 fs-4 pt-2 pb-2">Explore</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Home-->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+            <div class="product-home p-4 h-100 bg-warning text-white">
+                <div class="product-text d-flex flex-column align-items-center mt-2 fs-5">
+                    <h2>Home & Kitchen</h2>
+                    <p>Discover the perfect items to elevate your living space</p>
+                    <a href="#" class="btn btn-primary btn-sm w-50 fs-4 pt-2 pb-2">Explore</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beauty-->
+        <div class="col-lg-8 col-md-6 col-sm-12 mb-3">
+            <div class="product-beauty p-4 h-100 bg-danger text-white">
+                <div class="product-text d-flex flex-column align-items-center mt-2 fs-5">
+                    <h2>Beauty & Personal Care</h2>
+                    <p>Find the best products to pamper yourself and look your best</p>
+                    <a href="#" class="btn btn-primary btn-sm w-50 fs-4 pt-2 pb-2">Explore</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product-section py-5 ">
+    <div class="container">
+        <div class="row">
+            <% for(let product of products) { %>
+            <div class="col-md-6 col-lg-3 ml-3 mr-3">
+                <div class="card product-card mx-auto mb-4">
+                    <!-- Product Image with Rating -->
+                    <div class="position-relative">
+                        <img src="<%= product.img %>" class="card-img-top product-img" alt="Product Image">
+                        
+                    </div>
+                    <!-- Product Details -->
+                    <div class="card-body">
+                        <h5 class="card-title"><%= product.name %></h5>
+                        <p class="card-text text-muted product-description"><%= product.desc %></p>
+                        <!-- Product Price -->
+                        <h5 class="price text-danger">$ <%= product.price %></h5>
+                        <!-- Show Product Button -->
+                        <a href="/products/<%= product._id %>" class="btn btn-primary btn-block mt-3">Show Product</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</section>

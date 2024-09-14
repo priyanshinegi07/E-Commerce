@@ -1,0 +1,128 @@
+
+.product {
+    margin-top: 5rem;
+}
+/* Product Section Styling */
+.product-section {
+    background-color: #f8f9fa;
+    padding-top: 3rem;
+}
+
+/* Product Card Styling */
+.product-card {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Product Image Styling */
+.product-img {
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 2px solid #eee;
+}
+
+/* Star Rating */
+.rating-box .badge {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.rating-box i {
+    margin-left: 4px;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.product-card:hover .card-body h5 {
+    color: #0056b3;
+}
+
+.product-card:hover .btn {
+    background-color: #003d7a;
+    border-color: #003d7a;
+}
+
+/* Show Product Button */
+.btn-block {
+    width: 100%;
+    padding: 10px;
+}
+
+/* styling electronics, fashion, home and beauty */
+.product-electronics {
+    background-image: url(https://png.pngtree.com/background/20231017/original/pngtree-office-essentials-and-tech-gadgets-mobile-phone-laptop-printer-camera-headphones-picture-image_5591761.jpg);
+    background-size: cover;
+    background-position: center;
+    /* width: 100%; */
+    /* height: auto; */
+    /* min-height: 100px; */
+    min-height: 300px; 
+    display: flex;      
+    align-items: center;
+    justify-content: center;
+}
+.product-text {
+    text-align: center;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    size: 2rem;
+   
+}
+.product-electronics a, .product-fashion a, .product-home a, .product-beauty a {
+    background-color: #577eda;
+    border-radius: 8px; /* Custom rounded corners */
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.product-electronics a:hover, .product-fashion a:hover, .product-home a:hover, .product-beauty a:hover {
+    background-color: #6d91e3;
+}
+
+
+.product-fashion {
+    background-image: url(https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D);
+    min-height: 300px; 
+    display: flex;      
+    align-items: center;
+    justify-content: center;
+}
+
+.product-home {
+    background-image: url("https://images.unsplash.com/photo-1501183638710-841dd1904471?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGhvbWUlMjBhbmQlMjBraWN0Y2hlbnxlbnwwfHwwfHx8MA%3D%3D");
+    min-height: 300px; 
+    display: flex;      
+    align-items: center;
+    justify-content: center;
+}
+
+.product-beauty {
+    background-image: url(https://www.testhublab.com/wp-content/uploads/2023/03/Cosmetics-Personal-care-products.jpg);
+    background-size: cover;
+    background-position: center;
+    /* width: 100%; */
+    /* height: auto; */
+    /* min-height: 100px; */
+    min-height: 300px; 
+    display: flex;      
+    align-items: center;
+    justify-content: center;
+}
+
+.product-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Adjust the number of lines you want to show */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
