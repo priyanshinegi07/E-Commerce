@@ -106,35 +106,43 @@ passport.deserializeUser(User.deserializeUser());
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_S,
-    //redirects to this after authentication
     callbackURL: "https://e-commerce-1uxr.onrender.com/auth/google/callback",
-    scope:["profile","email"]
+    // callbackURL: "http://localhost:3000/auth/google/callback",
+    scope: ["profile", "email"]
   },
-  async(accessToken, refreshToken, profile, cb) => {
+  async (accessToken, refreshToken, profile, cb) => {
     try {
-        console.log("profile : ", profile)
-        let user = await User.findOne({googleId : profile.id});
-        if(!user) {
-            user = new User({
-                googleId : profile.id,
-                username : profile.displayName,
-                email : profile.emails[0].value
-            });
-            
-            await user.save();
-            
-            
-        }
-        console.log("e ",profile.emails[0].value)
-        return cb(null, user)
-        
-    }
-    catch(err) {
-        return cb(err);
+      // Call Google People API to register OAuth activity
+      try {
+        const response = await axios.get(
+          'https://people.googleapis.com/v1/people/me?personFields=names,emailAddresses',
+          {
+            headers: { Authorization: `Bearer ${accessToken}` }
+          }
+        );
+        console.log('People API response:', response.data);
+      } catch (apiErr) {
+        console.error('People API call failed:', apiErr.response?.data || apiErr.message);
+      }
+
+      // Your existing user logic
+      let user = await User.findOne({ googleId: profile.id });
+      if (!user) {
+        user = new User({
+          googleId: profile.id,
+          username: profile.displayName,
+          email: profile.emails[0].value
+        });
+        await user.save();
+      }
+
+      return cb(null, user);
+    } catch (err) {
+      return cb(err);
     }
   }
-
 ));
+
 //helps to store data in session for a particular user
 passport.serializeUser((user, cb) => {
     cb(null, user);
